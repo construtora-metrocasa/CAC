@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Central de Atendimento ao Cliente</title>
+  <link rel="icon" type="image/png" href="icon.png">
+  <style>
+    :root {
+      --primary: #1a1f36;
+      --accent: #2563eb;
+      --background: #f9fafb;
+      --text: #1e293b;
+      --shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      transition: all 0.25s ease-in-out;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: white;
+      box-shadow: var(--shadow);
+      padding: 14px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--primary);
+      margin: 0;
+    }
+
+    nav {
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      background-color: var(--accent);
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    button:hover {
+      background-color: #1d4ed8;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffffff;
+    }
+
+    .iframe-wrapper {
+      width: 100%;
+      height: 100%;
+      display: none;
+    }
+
+    .iframe-wrapper.active {
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: calc(100vh - 70px); /* ocupa toda a altura, subtraindo o cabeçalho */
+      border: none;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #6b7280;
+      padding: 14px 0;
+      background: #f1f5f9;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      header h1 {
+        font-size: 18px;
+      }
+      button {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+      iframe {
+        height: calc(100vh - 120px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Painel de Relatórios | Central de Atendimento ao Cliente</h1>
+    <nav>
+      <button onclick="showFrame('ezchat')">Ezchat</button>
+      <button onclick="showFrame('obras')">Evolutiva de Obras</button>
+    </nav>
+  </header>
+
+  <main>
+    <div id="ezchat" class="iframe-wrapper active">
+      <iframe 
+        src="https://app.powerbi.com/view?r=eyJrIjoiYmU5YzMwMDgtNzg2MC00MGZlLWExYjEtMDRhNTU2OGNhNmQ5IiwidCI6ImM3NGViY2JkLWE4MGYtNDYwYy1hMDUzLTEwZDViNmY1ZWQwNSJ9"
+        title="Ezchat" allowfullscreen="true"></iframe>
+    </div>
+
+    <div id="obras" class="iframe-wrapper">
+      <iframe 
+        src="https://app.powerbi.com/view?r=eyJrIjoiM2ExMzMwZmYtOTBhMi00YjQ1LThkMWEtYmIyYzc3NmQwNmFhIiwidCI6ImM3NGViY2JkLWE4MGYtNDYwYy1hMDUzLTEwZDViNmY1ZWQwNSJ9"
+        title="Evolutiva de Obras" allowfullscreen="true"></iframe>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Aquino • Relatórios Power BI
+  </footer>
+
+  <script>
+    function showFrame(id) {
+      document.querySelectorAll('.iframe-wrapper').forEach(el => el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
