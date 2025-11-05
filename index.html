@@ -19,14 +19,19 @@
       transition: all 0.25s ease-in-out;
     }
 
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
+      height: 100%;
       font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
       background-color: var(--background);
       color: var(--text);
-      height: 100vh;
+    }
+
+    body {
       display: flex;
       flex-direction: column;
+      overflow: hidden; /* evita scroll duplo */
     }
 
     header {
@@ -36,8 +41,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 0;
+      flex-shrink: 0;
       z-index: 10;
     }
 
@@ -51,6 +55,7 @@
     nav {
       display: flex;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     button {
@@ -68,12 +73,16 @@
       background-color: #1d4ed8;
     }
 
+    button.active {
+      background-color: #1e40af;
+    }
+
     main {
       flex: 1;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #ffffff;
+      width: 100%;
+      overflow: hidden;
+      background: white;
     }
 
     .iframe-wrapper {
@@ -88,7 +97,7 @@
 
     iframe {
       width: 100%;
-      height: calc(100vh - 70px);
+      height: 100%;
       border: none;
     }
 
@@ -99,6 +108,7 @@
       padding: 14px 0;
       background: #f1f5f9;
       border-top: 1px solid #e5e7eb;
+      flex-shrink: 0;
     }
 
     @media (max-width: 600px) {
@@ -116,10 +126,6 @@
         font-size: 14px;
         padding: 8px 16px;
       }
-
-      iframe {
-        height: calc(100vh - 120px);
-      }
     }
   </style>
 </head>
@@ -128,7 +134,7 @@
   <header>
     <h1>Painel de Relatórios | Central de Atendimento ao Cliente</h1>
     <nav>
-      <button onclick="showFrame('ezchat')">Ezchat</button>
+      <button onclick="showFrame('ezchat')" class="active">Ezchat</button>
       <button onclick="showFrame('obras')">Evolutiva de Obras</button>
       <button onclick="showFrame('vistoria')">Vistoria</button>
     </nav>
@@ -165,6 +171,10 @@
     function showFrame(id) {
       document.querySelectorAll('.iframe-wrapper').forEach(el => el.classList.remove('active'));
       document.getElementById(id).classList.add('active');
+
+      document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
