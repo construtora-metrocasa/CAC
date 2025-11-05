@@ -88,7 +88,7 @@
 
     iframe {
       width: 100%;
-      height: calc(100vh - 70px); /* ocupa toda a altura, subtraindo o cabeçalho */
+      height: calc(100vh - 70px);
       border: none;
     }
 
@@ -107,13 +107,16 @@
         align-items: flex-start;
         gap: 10px;
       }
+
       header h1 {
         font-size: 18px;
       }
+
       button {
         font-size: 14px;
         padding: 8px 16px;
       }
+
       iframe {
         height: calc(100vh - 120px);
       }
@@ -127,6 +130,7 @@
     <nav>
       <button onclick="showFrame('ezchat')">Ezchat</button>
       <button onclick="showFrame('obras')">Evolutiva de Obras</button>
+      <button onclick="showFrame('vistoria')">Vistoria</button>
     </nav>
   </header>
 
@@ -134,19 +138,22 @@
     <div id="ezchat" class="iframe-wrapper active">
       <iframe 
         src="https://app.powerbi.com/view?r=eyJrIjoiYmU5YzMwMDgtNzg2MC00MGZlLWExYjEtMDRhNTU2OGNhNmQ5IiwidCI6ImM3NGViY2JkLWE4MGYtNDYwYy1hMDUzLTEwZDViNmY1ZWQwNSJ9"
-        title="Ezchat" allowfullscreen="true"></iframe>
+        title="Ezchat" allowfullscreen="true">
+      </iframe>
     </div>
 
     <div id="obras" class="iframe-wrapper">
       <iframe 
         src="https://app.powerbi.com/view?r=eyJrIjoiM2ExMzMwZmYtOTBhMi00YjQ1LThkMWEtYmIyYzc3NmQwNmFhIiwidCI6ImM3NGViY2JkLWE4MGYtNDYwYy1hMDUzLTEwZDViNmY1ZWQwNSJ9"
-        title="Evolutiva de Obras" allowfullscreen="true"></iframe>
+        title="Evolutiva de Obras" allowfullscreen="true">
+      </iframe>
     </div>
+
     <div id="vistoria" class="iframe-wrapper">
-    <iframe 
+      <iframe 
         src="https://app.powerbi.com/view?r=eyJrIjoiNjJiYjA2MjMtYjBkMi00MGQ2LTgyM2YtYWU0YzBkNjFiMjMyIiwidCI6ImM3NGViY2JkLWE4MGYtNDYwYy1hMDUzLTEwZDViNmY1ZWQwNSJ9"
-        title="vistoria de obras" allowfullscreen="true"></iframe>
-    </iframe>
+        title="Vistoria de Obras" allowfullscreen="true">
+      </iframe>
     </div>
   </main>
 
@@ -164,4 +171,3 @@
 
 </body>
 </html>
-
